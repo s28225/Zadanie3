@@ -1,11 +1,13 @@
 ﻿namespace Zadanie2;
 
-public class Container
+public abstract class Container
 {
     private static int index = 0;
-    protected double MaxWeight { get; }
+    protected double MaxWeight { get; set; }
     protected double CurrentWeight { get; set; }
+    protected double ContainerHeight { get; set; }
     protected double Deep { get; set; }
+    protected double Height { get; set; }
     public string SerialNumber { get; }
 
     public Container(double maxWeight, string type)
@@ -14,7 +16,6 @@ public class Container
         this.MaxWeight = maxWeight;
         this.SerialNumber = "KON-" + type + "-" + index;
         this.CurrentWeight = 0;
-        Console.WriteLine("Hello world!");
     }
     
 
@@ -32,6 +33,13 @@ public class Container
 
     public void UnloadContainer(double additionalWeight)
     {
-        this.CurrentWeight -= additionalWeight;
+        if (this.CurrentWeight - additionalWeight < 0)
+        {
+            Console.WriteLine("Invalid action, container cannot be unloaded on thi weight");
+        }
+        else
+        {
+            this.CurrentWeight -= additionalWeight;
+        }
     }
 }

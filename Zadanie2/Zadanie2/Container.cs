@@ -14,7 +14,9 @@ public class Container
         this.MaxWeight = maxWeight;
         this.SerialNumber = "KON-" + type + "-" + index;
         this.CurrentWeight = 0;
+        Console.WriteLine("Hello world!");
     }
+    
 
     public void LoadContainer(double additionalWeight)
     {

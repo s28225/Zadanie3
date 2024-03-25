@@ -3,6 +3,8 @@
 public abstract class Container
 {
     private static int index = 0;
+    protected int procent { get; set; }
+
     protected double MaxWeight { get; set; }
     protected double CurrentWeight { get; set; }
     protected double ContainerHeight { get; set; }
@@ -17,29 +19,6 @@ public abstract class Container
         this.SerialNumber = "KON-" + type + "-" + index;
         this.CurrentWeight = 0;
     }
-    
 
-    public void LoadContainer(double additionalWeight)
-    {
-        if (this.CurrentWeight + additionalWeight <= MaxWeight)
-        {
-            this.CurrentWeight += additionalWeight;
-        }
-        else
-        {
-            Console.WriteLine("Invalid action, maximum load capacity will be overfilled");
-        }
-    }
-
-    public void UnloadContainer(double additionalWeight)
-    {
-        if (this.CurrentWeight - additionalWeight < 0)
-        {
-            Console.WriteLine("Invalid action, container cannot be unloaded on thi weight");
-        }
-        else
-        {
-            this.CurrentWeight -= additionalWeight;
-        }
-    }
+    public abstract void UnloadContainer(double additionalWeight);
 }

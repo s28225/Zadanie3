@@ -3,22 +3,30 @@
 public class ContainerL : Container, IHazardNotifier
 {
     protected string CurrentLiquid;
-    protected DangerLiquids? CurrentDangerous;
-    protected int procent { get; set; }
+    protected DangerObjects? CurrentDangerous;
 
     public ContainerL(double maxWeight, string type) : base(maxWeight, type)
     {
         this.CurrentLiquid = null;
     }
 
-    public void LoadContainer(double additionalWeight, string liquid, DangerLiquids danger)
+    public void LoadContainer(double additionalWeight, string liquid, DangerObjects danger)
     {
+        CheckAndInfo(danger);
         if (CurrentLiquid == null)
         {
-            this.procent = CheckAndInfo(danger);
-            ProcessLoad(additionalWeight);
             CurrentLiquid = liquid;
             CurrentDangerous = danger;
+            if (CurrentDangerous == DangerObjects.Dangerous)
+            {
+                procent = 50;
+            }else
+            {
+                procent = 90;
+            }
+            ProcessLoad(additionalWeight);
+            
+            
         }
         else if (CurrentLiquid == liquid && CurrentDangerous == danger)
         {
@@ -42,11 +50,11 @@ public class ContainerL : Container, IHazardNotifier
         }
     }
 
-    public void UnloadContainer(double additionalWeight)
+    public override void UnloadContainer(double additionalWeight)
     {
         if (this.CurrentWeight - additionalWeight < 0)
         {
-            Console.WriteLine("Invalid action, container cannot be unloaded on thi weight");
+            Console.WriteLine("Invalid action, container cannot be unloaded on this weight");
         }
         else
         {
@@ -60,14 +68,11 @@ public class ContainerL : Container, IHazardNotifier
         
     }
 
-    public int CheckAndInfo(DangerLiquids dangerLiquids)
+    public void CheckAndInfo(DangerObjects dangerObjects)
     {
-        if (dangerLiquids == DangerLiquids.Dangerous)
+        if (dangerObjects == DangerObjects.Dangerous)
         {
             Console.WriteLine("You fill a container with a dangerous liquid\n");
-            return 50;
         }
-
-        return 90;
     }
 }

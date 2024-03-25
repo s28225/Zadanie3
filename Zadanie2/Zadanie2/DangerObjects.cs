@@ -1,6 +1,6 @@
 ﻿namespace Zadanie2;
 
-public enum DangerLiquids
+public enum DangerObjects
 {
     Dangerous,
     Safe

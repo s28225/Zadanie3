@@ -2,5 +2,5 @@
 
 public interface IHazardNotifier
 {
-    public int CheckAndInfo(DangerLiquids dangerLiquids);
+    public void CheckAndInfo(DangerObjects dangerObjects);
 }

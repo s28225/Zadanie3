@@ -13,7 +13,7 @@ public class ContainerG : Container, IHazardNotifier
         this.Pressure = pressure;
     }
 
-    public void LoadContainer(double additionalWeight, string gaz, DangerObjects danger)
+    public override void LoadContainer(double additionalWeight, string gaz, DangerObjects danger)
     {
         CheckAndInfo(danger);
         if (CurrentGaz == null)

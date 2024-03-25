@@ -10,7 +10,7 @@ public class ContainerL : Container, IHazardNotifier
         this.CurrentLiquid = null;
     }
 
-    public void LoadContainer(double additionalWeight, string liquid, DangerObjects danger)
+    public override void LoadContainer(double additionalWeight, string liquid, DangerObjects danger)
     {
         CheckAndInfo(danger);
         if (CurrentLiquid == null)

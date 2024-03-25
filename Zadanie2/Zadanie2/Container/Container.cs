@@ -20,5 +20,6 @@ public abstract class Container
         this.CurrentWeight = 0;
     }
 
+    public abstract void LoadContainer(double additionalWeight, string type, DangerObjects dangerObjects);
     public abstract void UnloadContainer(double additionalWeight);
 }

@@ -12,7 +12,7 @@ public class ContainerC: Container
         this.Temperature = temperature;
     }
 
-    public void LoadContainer(double additionalWeight, string product)
+    public override void LoadContainer(double additionalWeight, string product, DangerObjects dangerObjects)
     {
         if (CurrentProduct == null)
         {

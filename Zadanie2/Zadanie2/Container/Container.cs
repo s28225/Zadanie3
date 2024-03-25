@@ -6,20 +6,31 @@ public abstract class Container
     protected int procent { get; set; }
 
     protected double MaxWeight { get; set; }
-    protected double CurrentWeight { get; set; }
-    protected double ContainerHeight { get; set; }
+    public double CurrentWeight { get; set; }
+    public double ContainerWeight { get; set; }
     protected double Deep { get; set; }
     protected double Height { get; set; }
     public string SerialNumber { get; }
 
-    public Container(double maxWeight, string type)
+    public Container(double containerWeight,double maxWeight, string type)
     {
+        this.ContainerWeight = containerWeight;
         index++;
         this.MaxWeight = maxWeight;
         this.SerialNumber = "KON-" + type + "-" + index;
         this.CurrentWeight = 0;
     }
 
+    public bool EqualsContainer(string name)
+    {
+        return this.SerialNumber==name;
+    }
+
     public abstract void LoadContainer(double additionalWeight, string type, DangerObjects dangerObjects);
     public abstract void UnloadContainer(double additionalWeight);
+
+    public override string ToString()
+    {
+        return SerialNumber + " -> " + CurrentWeight + "/" + MaxWeight;
+    }
 }

@@ -1,11 +1,11 @@
 ﻿namespace Zadanie2;
 
-public class ContainerL : Container, IHazardNotifier
+public class ContainerL :Container, IHazardNotifier
 {
     protected string CurrentLiquid;
     protected DangerObjects? CurrentDangerous;
 
-    public ContainerL(double maxWeight, string type) : base(maxWeight, type)
+    public ContainerL(double containerWeight,double maxWeight, string type) : base(containerWeight, maxWeight, type)
     {
         this.CurrentLiquid = null;
     }

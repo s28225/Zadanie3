@@ -6,7 +6,7 @@ public class ContainerC: Container
     protected double Temperature { get; set; }
     protected Dictionary<string, string> TemperatureProducts { get; set; }
 
-    public ContainerC(double maxWeight, string type, double temperature) : base(maxWeight, type)
+    public ContainerC(double currentWeight, double maxWeight, string type, double temperature) : base(currentWeight,maxWeight, type)
     {
         TakeProducts();
         this.Temperature = temperature;

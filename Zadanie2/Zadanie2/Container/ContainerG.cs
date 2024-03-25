@@ -7,7 +7,7 @@ public class ContainerG : Container, IHazardNotifier
     protected DangerObjects DangerObjects { get; set; }
 
 
-    public ContainerG(double maxWeight, string type, double pressure) : base(maxWeight, type)
+    public ContainerG(double containerWeight, double maxWeight, string type, double pressure) : base(containerWeight,maxWeight, type)
     {
         this.procent = 5;
         this.Pressure = pressure;
